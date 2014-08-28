@@ -2,9 +2,26 @@
 
 class welcome_controller extends CI_Controller {
 
+
 	public function index()
 	{
-		$this->load->view('downloading_page');
+		$this->load->view('page');
+	}
+	
+	public function getting_all_users_types()
+	{
+		$this->load->Model('all_users_services');
+		$types = $this->all_users_services->get_types();
+		return ($types);
+	} 
+
+
+	public function call()
+	{
+		$data = new stdClass();
+		$types = $this->getting_all_users_types();
+		$data->arr = $types;
+		$this->load->view('downloading_page',$data);
 	}
 	
 	public function hello()
@@ -12,7 +29,6 @@ class welcome_controller extends CI_Controller {
 		echo "hello mohamed";
 		var_dump($_POST);
 	}
+	
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

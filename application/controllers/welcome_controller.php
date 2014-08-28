@@ -10,6 +10,7 @@ class welcome_controller extends CI_Controller {
 	public function hello()
 	{
 		echo "hello mohamed";
+		var_dump($_POST);
 	}
 }
 

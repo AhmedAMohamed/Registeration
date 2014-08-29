@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
+	<title>
+		Register please
+	</title>
+	
 	<body>
 	
-		<form method="post" action="/registeration/Registeration/welcome_controller/hello">
+		<form method="post" action="/Registeration/welcome_controller/hello">
 			<table style="width: 300px">
 				<tr>
 					<td>
@@ -62,6 +66,6 @@
 				window.location.replace("http://stackoverflow.com");
 			}
 		</script>
-		
+
 	</body>
 </html>

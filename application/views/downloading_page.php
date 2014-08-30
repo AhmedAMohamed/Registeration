@@ -24,7 +24,7 @@
 			}
 		</style>
 		<div id = "main_form" >
-			<form method="post" action="/Registeration/welcome_controller/hello">
+			<form  name="reg_form" action="/Registeration/welcome_controller/insert_into_table" onsubmit="return validateForm()" title="Register for application" method="post">
 				<table>
 					<div id = "row_1">
 						<tr>
@@ -32,7 +32,7 @@
 								Name
 							</td>
 							<td>
-								<input type="text" name="name" value="write your name">
+								<input type="text" name="name">
 							</td>
 						</tr>
 					
@@ -43,7 +43,7 @@
 								Email
 							</td>
 							<td>
-								<input type="text" name="email" value="write your email">
+								<input type="email" name="email" value="write your email">
 							</td>
 						</tr>
 					</div>
@@ -53,7 +53,7 @@
 								Confirm email
 							</td>
 							<td>
-								<input type="text" name="con_email" value="write your email">
+								<input type="email" name="con_email" value="write your email">
 							</td>
 						</tr>
 					</div>
@@ -64,10 +64,23 @@
 								password
 							</td>
 							<td>
-								<input type="text" name="email" value="write your email">
+								<input type="password" name="password" value="write your email">
 							</td>
 						</tr>
 					</div>
+					
+					<div>
+						<tr>
+							<td>
+								Confirm password
+							</td>
+							<td>
+								<input type="password" name="con_password" value="write your email">
+							</td>
+						</tr>
+					</div>
+					
+					
 					<div>
 						<tr>
 							<td>
@@ -93,9 +106,29 @@
 		<script>
 			function call(){
 				var url = "http://localhost/Registeration/welcome_controller/end";
-				var win = window.open(url, '_blank');
-  				win.focus();
+				//var win = window.open(url, '_blank');
+  				//win.focus();
 			}
+			
+			function validateForm() {
+ 			   var x = document.forms["reg_form"]["name"].value;
+    			if (x == null || x == "") {
+        			alert("First name must be filled out");
+        			return false;
+    			}
+    			x = document.forms["reg_form"]["password"].value;
+    			if (x.length < 10) {
+        			alert("The password is too short");
+        			return false;
+    			}
+    			var y = document.forms["reg_form"]["con_password"].value;
+    			if(x != y) {
+    				alert("The password does nt match");
+    				return false;
+    			}
+    			return true;
+			}
+			
 		</script>
 
 	</body>

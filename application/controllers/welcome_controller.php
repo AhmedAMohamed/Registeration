@@ -24,15 +24,18 @@ class welcome_controller extends CI_Controller {
 		$this->load->view('downloading_page',$data);
 	}
 	
-	public function hello()
+	public function insert_into_table()
 	{
-		var_dump($_POST);
+		$data = new stdClass();
+		$all = $_POST;
+		$data->posts = $all;
+		$this->load->Model('insert_into_table');
+		$this->insert_into_table->insert($all);
 	}
 	
 	public function end()
 	{
-		echo "hello mohamed";
-		var_dump($_POST);
+		$this->load->view('download');
 	}
 	
 	

@@ -26,18 +26,14 @@ class welcome_controller extends CI_Controller {
 	
 	public function insert_into_table()
 	{
-		$data = new stdClass();
-		$all = $_POST;
-		$data->posts = $all;
 		$this->load->Model('insert_into_table');
-		$this->insert_into_table->insert($all);
+		$this->insert_into_table->insert($_POST);
 	}
 	
 	public function end()
 	{
 		$this->load->view('download');
 	}
-	
-	
 }
 
+		

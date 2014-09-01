@@ -24,10 +24,9 @@
 			}
 		</style>
 		<div id = "main_form" >
-			<form  name="reg_form" action="/Registeration/welcome_controller/insert_into_table" onsubmit="return validateForm()" title="Register for application" method="post">
+			<form  name="reg_form" action="/registeration/Registeration/welcome_controller/insert_into_table" onsubmit="return validateForm()" title="Register for application" method="post">
 				<table>
-					<div id = "row_1">
-						<tr>
+						<tr id = "row_1">
 							<td>
 								Name
 							</td>
@@ -35,79 +34,64 @@
 								<input type="text" name="name">
 							</td>
 						</tr>
-					
-					</div>
-					<div> 
+			 
 						<tr>
 							<td>
 								Email
 							</td>
 							<td>
-								<input type="email" name="email" value="write your email">
+								<input type="email" name="email" value="">
 							</td>
 						</tr>
-					</div>
-					<div>
 						<tr>
 							<td>
 								Confirm email
 							</td>
 							<td>
-								<input type="email" name="con_email" value="write your email">
+								<input type="email" name="con_email" value="">
 							</td>
 						</tr>
-					</div>
-				
-					<div>
 						<tr>
 							<td>
 								password
 							</td>
 							<td>
-								<input type="password" name="password" value="write your email">
+								<input type="password" name="password" value="">
 							</td>
 						</tr>
-					</div>
-					
-					<div>
 						<tr>
 							<td>
 								Confirm password
 							</td>
 							<td>
-								<input type="password" name="con_password" value="write your email">
+								<input type="password" name="con_password" value="">
 							</td>
 						</tr>
-					</div>
-					
-					
-					<div>
 						<tr>
 							<td>
 								Type	
 							</td>
 							<td>
-								<Select name="ahmed">
+								<Select name="type" style="width:175px">
+									<option>Choose client type</option>
 									<?php
 										foreach ($arr as $row) {
-											echo '<option>'.$row->type_name.'</option>';
+											echo '<option value = "'.$row->type_name.'">'.$row->type_name.'</option>';
 										}
 									?>
 								</Select>	
 							</td>
 						</tr>
-					</div>
-				</table>
-			
-				<input onclick="call()" type="submit" value="Submit" style="alignment-adjust:middle; position:relative;top:20px;left: 150px; ">	
+				</table>	
+				<input type="submit" value="Submit" style="alignment-adjust:middle; position:relative;top:20px;left: 150px; ">	
 			</form>
 		</div>
 		
 		<script>
 			function call(){
-				var url = "http://localhost/Registeration/welcome_controller/end";
-				//var win = window.open(url, '_blank');
-  				//win.focus();
+				var url = "http://localhost/registeration/Registeration/welcome_controller/end";
+				var win = window.open(url, '_blank');
+  				win.focus();
 			}
 			
 			function validateForm() {
@@ -116,16 +100,29 @@
         			alert("First name must be filled out");
         			return false;
     			}
+    			
+    			x = document.forms["reg_form"]["email"].value;
+    			if (x.length < 10) {
+        			alert("The email is not valid");
+        			return false;
+    			}
+    			var y = document.forms["reg_form"]["con_email"].value;
+    			if(x != y) {
+    				alert("The email does not match");
+    				return false;
+    			}
+    			
     			x = document.forms["reg_form"]["password"].value;
     			if (x.length < 10) {
         			alert("The password is too short");
         			return false;
     			}
-    			var y = document.forms["reg_form"]["con_password"].value;
+    			y = document.forms["reg_form"]["con_password"].value;
     			if(x != y) {
-    				alert("The password does nt match");
+    				alert("The password does not match");
     				return false;
     			}
+    			call();
     			return true;
 			}
 			
